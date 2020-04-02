@@ -1,5 +1,5 @@
 * الگوریتم بانکدار | Banker algorithm
-** نام متغغیرات و وظایف آن‌ها | Name of the variables and their duty
+** نام متغغیرها و وظایف آن‌ها | Name of the variables and their duty
 
 | Variable | Description |
 | :---: | :---: |
@@ -14,3 +14,6 @@
 | `Count` | which process running at that time | 
 | `safe` | final state, the **True** means everything works fine and there is no deadlock, the **False** means there is a deadlock | 
 | `exe` | State of executing process, the **False** runs nothing and the **True** will execute a if statement  |
+
+برای اجرا دستور `python Banker.py` را در کنسول اجرا کنید. | To execute program
+just run the `python banker.py` command.
