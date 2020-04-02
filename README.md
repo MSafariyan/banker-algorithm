@@ -1,5 +1,5 @@
-*الگوریتم بانکدار | Banker algorithm
-**نام متغغیرها و وظایف آن‌ها | Name of the variables and their duty
+# Banker algorithm | الگوریتم بانکدار 
+### Name of the variables and their duty | نام متغغیرها و وظایف آن‌ها
 
 | Variable | Description |
 | :---: | :---: |
