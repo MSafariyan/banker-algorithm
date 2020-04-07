@@ -1,3 +1,4 @@
+"""Simulation of Banker algorithm for predicting deadlocks in operating system"""
 # Author: Mahdi Safarian
 # Lang: python
 # Subject: Banker Algorithm. Deadlock detector.
@@ -7,54 +8,54 @@
 
 
 def main():
-    print("Enter number of processes: ")
-    P = int(input())
-    print("Enter number of resources: ")
-    R = int(input())
+    """Start point of the program"""
+    print("Enter the number of processes: ")
+    p = int(input())
+    print("Enter the number of resources: ")
+    r = int(input())
 
-    MaxResources = [int(i) for i in input("maximum resources : ").split()]
+    max_resources = [int(i) for i in input("Maximum resources: ").split()]
 
-    print("\n Crrrent allocated for each process~")
-    CurrentAllocated = [[int(i) for i in input(f"process {j + 1} : ").split()] for j in range(P)]
+    print("\n Current allocated for each process~")
+    current_allocated = [[int(i) for i in input(f"Process {j + 1}: ").split()] for j in range(p)]
 
-    print("\n Max resources for each process~")
-    MaxNeed = [[int(i) for i in input(f"process {j + 1} : ").split()] for j in range(P)]
+    print("\n Maximum resources for each process~")
+    max_need = [[int(i) for i in input(f"Process {j + 1}: ").split()] for j in range(p)]
 
-    Allo = [0] * R
-    for i in range(P):
-        for j in range(R):
-            Allo[j] +=CurrentAllocated[i][j]
-    print(f"\ntotal allocated resources : {Allo}")
+    allo = [0] * r
+    for i in range(p):
+        for j in range(r):
+            allo[j] += current_allocated[i][j]
+    print(f"\nTotal allocated resources = {allo}")
 
-    Ava = [MaxResources[i] - Allo[i] for i in range(R)]
-    print(f"total available resources : {Ava}\n")
+    ava = [max_resources[i] - allo[i] for i in range(r)]
+    print(f"Total available resources = {ava}\n")
 
-    Running = [True] * P
-    Count = P
-    while Count != 0:
+    running = [True] * p
+    count = p
+    while count != 0:
         safe = False
-        for i in range(P):
-            if Running[i]:
+        for i in range(p):
+            if running[i]:
                 exe = True
-                for j in range(R):
-                    if MaxNeed[i][j] - CurrentAllocated[i][j] > Ava[j]:
+                for j in range(r):
+                    if max_need[i][j] - current_allocated[i][j] > ava[j]:
                         exe = False
                         break
                 if exe:
-                    print(f"process {i + 1} is executing")
-                    Running[i] = False
-                    Count -=1
+                    print(f"Process {i + 1} is executing...")
+                    running[i] = False
+                    count -= 1
                     safe = True
-                    for j in range(R):
-                        Ava[j] += CurrentAllocated[i][j]
+                    for j in range(r):
+                        ava[j] += current_allocated[i][j]
                     break
         if not safe:
-            print("the proccess are in an unsafe state.")
+            print("The proccesses are in an unsafe state.")
             break
 
-        print(f"the process is in a safe state. \n Available resources: {Ava}\n")
+        print(f"The processes are is in a safe state. \n Available resources = {ava}\n")
 
 if __name__ == '__main__':
     main()
-
-    print("thanks for your participation")
+    print("Thanks for your participation")
